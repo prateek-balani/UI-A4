@@ -28,10 +28,29 @@ public class PlayerController : MonoBehaviour
     private RaycastHit leftHit;
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+            Debug.LogWarning("Rigidbody component was missing and has been added to the PlayerController.");
+        }
+        
+        // Ensure inputManager is assigned
+        if (inputManager == null)
+        {
+            inputManager = Object.FindAnyObjectByType<InputManager>();
+            if (inputManager == null)
+            {
+                Debug.LogError("InputManager reference is missing from the PlayerController.");
+                return;
+            }
+        }
+
         inputManager.OnMove.AddListener(MovePlayer);
         inputManager.OnJump.AddListener(Jump);
         inputManager.OnDash.AddListener(Dash);
-        rb = GetComponent<Rigidbody>();
+
+        
         col = GetComponent<Collider>();
         freeLookCamera = FindAnyObjectByType<CinemachineCamera>();
     }
@@ -42,6 +61,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (rb == null) return;
+
         if (isDashing)
         {
             if (IsTouchingGround())
@@ -75,6 +96,8 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer(Vector2 dirn)
     {
+        if (rb == null) return;
+
         Vector3 direction = new Vector3(dirn.x, 0f, dirn.y);
         Quaternion rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
         Vector3 reorientedDirection = rotation * direction;

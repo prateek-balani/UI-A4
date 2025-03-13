@@ -13,6 +13,9 @@ public class InputManager : MonoBehaviour
         {
             OnSettingsMenu?.Invoke();
         }
+
+        if (GameManager.Instance.IsSettingsMenuActive) return;
+
         Vector2 input = Vector2.zero;
         if (Input.GetKey(KeyCode.W))
         {
@@ -30,6 +33,12 @@ public class InputManager : MonoBehaviour
         {
             input += Vector2.right;
         }
+
+        if (OnMove != null)
+        {
+            OnMove.Invoke(input.normalized);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnJump?.Invoke();
@@ -39,9 +48,5 @@ public class InputManager : MonoBehaviour
         {
             OnDash?.Invoke();
         }
-        if (GameManager.Instance.IsSettingsMenuActive) return;
-        OnMove?.Invoke(input.normalized);
-
-        
     }
 }
