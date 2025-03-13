@@ -1,6 +1,11 @@
 using TMPro;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
     [SerializeField] private int score = 0;
@@ -18,15 +23,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         Cursor.lockState = CursorLockMode.Locked;
         inputManager.OnSettingsMenu.AddListener(ToggleSettingsMenu);
 
-        if (coinCounter == null)
-        {
-            Debug.LogWarning("CoinCounterUI is not assigned in the GameManager.");
-        }
-
-        if (scoreText == null)
-        {
-            Debug.LogWarning("ScoreText is not assigned in the GameManager.");
-        }
+        
         DisableSettingsMenu();
     }
 
@@ -59,12 +56,20 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         isSettingsMenuActive = true;
     }
 
-    private void DisableSettingsMenu()
+    public void DisableSettingsMenu()
     {
         Time.timeScale = 1f;
         settingsMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isSettingsMenuActive = false;
+    }
+    public void QuitGame()
+    {
+        # if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+        # else
+        Application.Quit();
+        # endif
     }
 }

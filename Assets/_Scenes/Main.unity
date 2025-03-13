@@ -522,7 +522,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 173409669}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1623929140}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: DisableSettingsMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &173409669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3715,6 +3727,7 @@ GameObject:
   - component: {fileID: 1476346217}
   - component: {fileID: 1476346219}
   - component: {fileID: 1476346218}
+  - component: {fileID: 1476346220}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -3815,18 +3828,42 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1623929137}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 511674247}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: UpdatePlayerMaxSpeed
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1476346220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476346216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6548b693830ecb47a22a007b825677c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputManager: {fileID: 0}
+  maxSpeed: 0
+  acceleration: 0
+  jumpForce: 0
+  dashForce: 0
+  airControl: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  jumpCount: 0
+  rough: {fileID: 0}
+  smooth: {fileID: 0}
 --- !u!1 &1566924060
 GameObject:
   m_ObjectHideFlags: 0
@@ -5063,7 +5100,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2104737164}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1623929140}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2104737164
 MonoBehaviour:
   m_ObjectHideFlags: 0

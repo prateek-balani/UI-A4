@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer(Vector2 dirn)
     {
-        Vector3 direction = new Vector3(dirn.x, 0f, dirn.y) ;
+        Vector3 direction = new Vector3(dirn.x, 0f, dirn.y);
         Quaternion rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
         Vector3 reorientedDirection = rotation * direction;
         if (IsTouchingGround())
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
             jumpCount = 0;
         }
 
-        if(jumpCount < doubleJump)
+        if (jumpCount < doubleJump)
         {
             // resetting vertical velocity before applying jump force
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
@@ -111,5 +111,10 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         rb.linearVelocity = Vector3.zero;
         rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+    }
+
+    public void UpdatePlayerMaxSpeed(float speed)
+    {
+        maxSpeed = speed;
     }
 }

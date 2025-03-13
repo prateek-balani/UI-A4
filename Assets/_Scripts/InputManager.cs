@@ -39,6 +39,9 @@ public class InputManager : MonoBehaviour
         {
             OnDash?.Invoke();
         }
+        if (GameManager.Instance.IsSettingsMenuActive) return;
         OnMove?.Invoke(input.normalized);
+
+        
     }
 }
